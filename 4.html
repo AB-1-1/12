@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Do App</title>
+    <style>
+        body { background-color: rgb(220, 217, 206); }
+        form { display: flex; justify-content: center; }
+        h2 { text-align: center; }
+    </style>
+</head>
+
+<body>
+    <h2>To Do App</h2>
+    <form onsubmit="return addTask()">
+        <input type="text" id="taskInput" placeholder="Enter the task" required>
+        <input type="submit" value="Add Task">
+    </form>
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskList = document.getElementById('taskList');
+            const listItem = document.createElement('li');
+
+            listItem.textContent = taskInput.value;
+            listItem.onclick = () => listItem.style.textDecoration = "line-through";
+            taskList.appendChild(listItem);
+            taskInput.value = "";
+
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+
+</html>
